@@ -10,6 +10,7 @@ const PORT = process.env.PORT
 const authRouter = require('./routes/auth.js')
 const bookRouter = require('./routes/book.js')
 const userRouter = require('./routes/user.js')
+const orderRouter = require('./routes/order.js')
 const app = express();
 
 app.use(cors({
@@ -27,6 +28,7 @@ connectdb(process.env.MONGO_URI)
 app.use(express.json()) 
 
 //Routes
+app.use("/api/orders", orderRouter)
 app.use("/api/auth", authRouter)
 app.use("/api/books", bookRouter)
 app.use("/api/users", userRouter)

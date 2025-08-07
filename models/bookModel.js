@@ -20,8 +20,24 @@ const bookSchema = new mongoose.Schema({
         default:Date.now
     },
     userId:{ //Foreign key
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user'
     },
+    price:{
+        type: Number
+    },
+    stock:{
+        type: Number,
+    },
+    leftQuantity:{
+        type: Number,
+    },
+    status:{
+        type: String,
+        enum: ['draft', 'published'],
+        default: 'draft'
+    }
+
 })
  
 //model
